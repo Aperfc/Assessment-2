@@ -7,23 +7,24 @@ namespace Assessment_2
 {
     class Hand
     {
-        private List<Card> hand;
-        public Hand()
+        private List<Card> hand;        //players hand which is a list of cards
+
+        public Hand()       //getter and setter
         {
             hand = new List<Card>();
         }
 
-        public void Add(Card new_card)
+        public void Add(Card new_card)      //adds a new card to the players hand
         {
             hand.Add(new_card);
         }
 
-        public void Fold()
+        public void Fold()      //removes all cards in the players hand
         {
             hand = new List<Card>();
         }
 
-        public void Check()
+        public void Check()     //displays all cards the player is currently holding.
         {
             if (hand.Count == 0)
             {
