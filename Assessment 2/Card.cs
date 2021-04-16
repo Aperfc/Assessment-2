@@ -13,34 +13,22 @@ namespace Assessment_2
         private Dictionary<int, string> Value_To_Name = new Dictionary<int, string> { { 1, "Ace" }, { 11, "Jack" }, { 12, "Queen" }, { 13, "King" } };
 
         //getters and setters
-        public int _Value 
-        {
-            get { return Value; }
-            set { Value = value; }
-        }
-        public string _Suit
-        {
-            get { return Suit; }
-            set { Suit = value; }
-        }
+        //removed getters and setters
 
         public Card(string suit, int val)
         {
-            _Value = val;
-            _Suit = suit;
+            Value = val;
+            Suit = suit;
         }
 
         //prints out the details of the cards by making use of excepotion handling to allow named cards eg indtead of 1 its ace.
         public void Details()
         {
-            try
-            {
+
+            if (Value_To_Name.ContainsKey(Value))       //checks if the dictionary contains the key whic is one of the values.
                 Console.WriteLine($"{Value_To_Name[Value]} of {Suit}");
-            }
-            catch (Exception)
-            {
+            else
                 Console.WriteLine($"{Value} of {Suit}");
-            }
         }
 
     }

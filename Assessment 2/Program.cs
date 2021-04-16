@@ -10,18 +10,7 @@ namespace Assessment_2
         {
             //adds the cards to the deck then shuffles the cards with a method
             Hand hand = new Hand();
-            List<int> values = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
-            List<string> suits = new List<string> { "spades", "Hearts", "Clubs", "Diamonds" };
             Deck card_deck = new Deck();
-            foreach(string suit in suits)
-            {
-                foreach(int val in values)
-                {
-                    Card temp_card = new Card(suit, val);
-                    card_deck.Add(temp_card);
-                }
-            }
-            card_deck.Shuffle();
 
             //used to capture the users response and act accordinglly. will keep running on a loop until there are no more cards to pull from .
             while(card_deck.isEmpty() == false)
@@ -43,19 +32,18 @@ namespace Assessment_2
                 else if (choice == "3")     //emptys the users hand, removing all cards the user has been dealt
                 {
                     hand.Fold();
-                    Console.WriteLine("you have folded your hand and how your hand is empty");
+                    Console.WriteLine("you have folded your hand and now your hand is empty");
                 }
                 else if (choice == "4")     //quits the program by breaking the loop
                 {
-                    break;
+                    Environment.Exit(0);   
                 }
                 else
                 {
-                    Console.WriteLine("you did not enter a valaid response, try again");
+                    Console.WriteLine("you did not enter a valid response, try again");
                 }
             }
-            if (card_deck.isEmpty() == true)        //prints the message that the deck is empty, wont print if the user quits the program by choice.
-                Console.WriteLine("\nthe deck is now empty\n");
+            Console.WriteLine("the deck is now empty");
         }
     }
 }

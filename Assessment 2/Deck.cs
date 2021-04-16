@@ -8,20 +8,24 @@ namespace Assessment_2
     {
         private List<Card> Deck_Of_Cards;       //only attribute which holdes a list of cards, the deck
 
-        public List<Card> _Deck_Of_Cards        //getter and setter
-        {
-            get { return Deck_Of_Cards; }
-            set { Deck_Of_Cards = value; }
-        }
-
         public Deck()       //default constructor
         {
-            _Deck_Of_Cards = new List<Card>();
+            List<string> suits = new List<string> { "spades", "Hearts", "Clubs", "Diamonds" };
+            Deck_Of_Cards = new List<Card>();
+            foreach(string item in suits)       //generates a deck of cards bby iterating over the suits
+            {
+                for (int i = 1; i <= 13; i++)       //iterating over the numbers
+                {
+                    Card new_card = new Card(item, i);
+                    Deck_Of_Cards.Add(new_card);
+                }
+            }
+            Shuffle();      //shuffles the cards
         }
 
         public Deck(List<Card> New_Deck): this()       //consructor when a arguement is given
         {
-            _Deck_Of_Cards = New_Deck;
+            Deck_Of_Cards = New_Deck;
         }
 
         public void Add(Card new_card)      //adds a new card to the deck
@@ -34,16 +38,16 @@ namespace Assessment_2
             return Deck_Of_Cards.Count == 0;
         }
 
-        public void Shuffle()       //shuffles th cards by using a random number generator to put cards into a new list while reducing the original list 
+        public void Shuffle()       //shuffles the cards by using a random number generator
         {
             var rand = new Random();
             int length = Deck_Of_Cards.Count;
-            List<Card> temp_list = new List<Card>();
-            for (int i = 0; i < length; i++)
+            List<Card> temp_list = new List<Card>();        //creates a new list
+            for (int i = 0; i < length; i++)        //iterates over the list of cards
             {
-                int random_number = rand.Next(Deck_Of_Cards.Count);
-                temp_list.Add(Deck_Of_Cards[random_number]);
-                Deck_Of_Cards.RemoveAt(random_number);
+                int random_number = rand.Next(Deck_Of_Cards.Count);     //selects a random card from the deck, the count is always changing
+                temp_list.Add(Deck_Of_Cards[random_number]);        //addds thwe card to the new list
+                Deck_Of_Cards.RemoveAt(random_number);      //removes card from old list
             }
             Deck_Of_Cards = temp_list;
         }
