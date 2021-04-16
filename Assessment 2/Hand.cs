@@ -9,7 +9,7 @@ namespace Assessment_2
     {
         private List<Card> hand;        //players hand which is a list of cards
 
-        public Hand()       //getter and setter
+        public Hand()       //Constructor
         {
             hand = new List<Card>();
         }

@@ -19,10 +19,10 @@ namespace Assessment_2
                 string choice = Console.ReadLine();
                 if (choice == "1")      //deal a card
                 {
-                    Card dealt_card = card_deck.Deal();
-                    hand.Add(dealt_card);
+                    Card dealt_card = card_deck.Deal();     //deals a card by runnign the deal method which returns the car dealt
+                    hand.Add(dealt_card);       //adds the card to your hadn
                     Console.WriteLine("\nYou have been dealt the...");
-                    dealt_card.Details();
+                    dealt_card.Details();       //displays the cards details 
                     Console.WriteLine("");
                 }
                 else if (choice == "2")     //checks which cards the user has pulled
